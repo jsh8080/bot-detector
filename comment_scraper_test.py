@@ -8,6 +8,7 @@ comments = []
 count = 0
 
 #currently only displays some comments an not others, further refinement needed
+#https://www.youtube.com/watch?v=SIm2W9TtzR0 this is the video currently being scraped
 for item in request['items']:
     count += 1
     print(count)
