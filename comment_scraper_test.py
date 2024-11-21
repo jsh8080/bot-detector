@@ -1,19 +1,19 @@
 import googleapiclient.discovery
 
-youtube = googleapiclient.discovery.build("youtube","v3",developerKey="AIzaSyASMkoOe3TxLZwzwY5BRCVZEu689I-dFuw")
+youtube = googleapiclient.discovery.build("youtube","v3",developerKey="AIzaSyCVJjcD77f13zb2tHTsmFslvF8Dm9efn-Q")
 
-request = youtube.commentThreads().list(part="snippet",videoId="-0FtcHjI5lmw",maxResults=100)
-response = request.execute()
+request = youtube.commentThreads().list(part="snippet",videoId="SIm2W9TtzR0",maxResults=100).execute()
 
 comments = []
+count = 0
 
-for item in response['items']:
-    comment = item['snippet']['topLevelComment']['snippet']
-    public = item['snippet']['isPublic']
-    comments.append([comment['authorDisplayName'],
-                     comment['publishedAt'],
-                     comment['likeCount'],
-                     comment['textOriginal'],
-                     public])
+#currently only displays some comments an not others, further refinement needed
+for item in request['items']:
+    count += 1
+    print(count)
+    print(item['snippet']['topLevelComment']['snippet']['textDisplay'])
+    print()
+    print()
+
 
                 
