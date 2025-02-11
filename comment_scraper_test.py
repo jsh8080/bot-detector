@@ -5,7 +5,7 @@ youtube = googleapiclient.discovery.build("youtube","v3",developerKey="AIzaSyCVJ
 request = youtube.commentThreads().list(part="snippet",videoId="zrsPs3CzHWs",maxResults=500).execute()
 
 comments = []
-comment_storage = open('botDetector\comment_base.txt','w',encoding='utf-8')
+comment_storage = open('comment_base.txt','w',encoding='utf-8')
 count = 0
 
 
