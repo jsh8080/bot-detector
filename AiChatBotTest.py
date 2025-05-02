@@ -18,13 +18,13 @@ def make_request():
     completion = client.chat.completions.create(
     model="gpt-4",
     messages=[
-            {"role": "system", "content": "You are a helpful AI that processes text."},
-            {"role": "user", "content": f"Here is some text of youtube comments; give me the comments in the same spaced format, but with a statistic next to each comment of the propability that comment is a bot, show the statistic with just the number followed by a percent sign, it does not have to be completely accurate just based on what bots usually comment. Show every comment:\n\n" + file_content},
+            {"role": "system", "content": "You are a helpful AI that analyzes youtube comments for bot-like behavior"},
+            {"role": "user", "content": f"look at these comments and return the full list with percentages next to each of the likelihood they are a bot, fix html syntax" + file_content},
         ],
     )
-    print(completion.choices[0].message.content)
     comment_edits.write(completion.choices[0].message.content)
     comment_edits.close()
+    return completion.choices[0].message.content
 
 #use only to test out the function in this file, otherwise leave commented
-#make_request()
+#print(make_request())
